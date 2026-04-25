@@ -1,32 +1,48 @@
-import { defineConfig } from '@/types/config';
+import { defineConfig } from './src/types/config';
 
 export default defineConfig({
   manifest: {
     id: '/',
-    name: 'My Blog',
-    short_name: 'My Blog',
-    description: 'My blog description goes here...',
-    dir: 'auto',
-    lang: 'en-US',
-    background_color: '#fff',
-    theme_color: '#fff',
+    name: 'Bac Feljib',
+    short_name: 'Bac Feljib',
+    description: 'منصة تعليمية جزائرية لطلاب البكالوريا: دروس، ملخصات، تمارين وحساب المعدل.',
+    dir: 'rtl',
+    lang: 'ar-DZ',
+    background_color: '#f8fafc',
+    theme_color: '#2447c7',
     display: 'standalone',
     orientation: 'natural',
     scope: '/',
     start_url: '/?utm_source=homescreen',
-    prefer_related_applications: false,
+    
+    // ✅ تفعيل الربط مع تطبيقك على جوجل بلاي
+    prefer_related_applications: true,
+    related_applications: [
+      {
+        platform: 'play',
+        url: 'https://play.google.com/store/apps/details?id=com.bac.feljib.dz.education',
+        id: 'com.bac.feljib.dz.education',
+      },
+    ],
+
     shortcuts: [
       {
-        name: 'Shortcut 1',
-        short_name: 'Shortcut 1',
-        description: 'Shortcut 1 description goes here...',
-        url: '/search/label/shortcut-1?utm_source=homescreen',
+        name: 'الدروس والملخصات',
+        short_name: 'الدروس',
+        description: 'دروس وملخصات البكالوريا',
+        url: '/p/lessons-and-summaries-bac?utm_source=homescreen',
       },
       {
-        name: 'Shortcut 2',
-        short_name: 'Shortcut 2',
-        description: 'Shortcut 2 description goes here...',
-        url: '/search/label/shortcut-2?utm_source=homescreen',
+        name: 'تمارين محلولة',
+        short_name: 'تمارين',
+        description: 'تمارين محلولة للبكالوريا',
+        url: '/p/exercises-with-solution-bac?utm_source=homescreen',
+      },
+      {
+        name: 'العد التنازلي للبكالوريا',
+        short_name: 'العد التنازلي',
+        description: 'توقيت امتحان البكالوريا',
+        url: '/p/bac-exam-countdown?utm_source=homescreen',
       },
     ],
   },
@@ -35,13 +51,11 @@ export default defineConfig({
     logs: true,
   },
 
-  // OneSignal is only available if you are using cloudflare workers
   oneSignal: {
-    enabled: false, // To enable OneSignal, set this to true
-    appId: '********-****-****-****-************', // Replace with your OneSignal App Id
+    enabled: false, // اجعلها true إذا كنت تريد تفعيل الإشعارات عبر OneSignal
+    appId: 'd9dd4395-8656-4f28-a0ef-e38f554b1c42',
     allowLocalhostAsSecureOrigin: true,
   },
 
-  // Please replace with your blog url if you are using CDN (JsDelivr)
-  origin: 'https://blogger-pwa.blogspot.com',
+  origin: 'https://www.bac-feljib.com',
 });
